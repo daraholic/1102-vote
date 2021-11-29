@@ -115,6 +115,10 @@ function all($table,...$arg){
     return $pdo->exec($sql);
  }
 
+function to($url){
+    header("location:".$url);
+}
+
 
  function dd($array){
      echo "<pre>";
