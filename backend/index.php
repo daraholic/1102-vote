@@ -1,3 +1,4 @@
+<?php include_once "../api/db.php";?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -14,31 +15,35 @@
 </head>
 <body>
 
-<div class="jumbotron">
-<div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
-  <div class="carousel-inner">
+<div class="jumbotron p-0"  style="overflow:hidden;height:250px">
+<a href="index.php">
+<div id="carouselExampleSlidesOnly" class="carousel slide  position-relative" data-ride="carousel">
+  <div class="carousel-inner position-absolute" style="top:-250px">
     <div class="carousel-item active">
-      <img class="d-block w-100" src=".../800x400?auto=yes&bg=777&fg=555&text=First slide" alt="First slide">
+      <img class="d-block w-100" src="../image/dessert-01.jpg" alt="First slide">
     </div>
     <div class="carousel-item">
-      <img class="d-block w-100" src=".../800x400?auto=yes&bg=666&fg=444&text=Second slide" alt="Second slide">
+      <img class="d-block w-100" src="../image/dessert-03.jpg" alt="Second slide">
     </div>
     <div class="carousel-item">
-      <img class="d-block w-100" src=".../800x400?auto=yes&bg=555&fg=333&text=Third slide" alt="Third slide">
+      <img class="d-block w-100" src="../image/dessert-06.jpg" alt="Third slide">
     </div>
   </div>
 </div>
-</div>    
+</a>
+</div>
+<div class="container">
 <?php
 
-$do=(isset($_GET['do']))?$_GET['do']:'add_subject_form';
+$do=(isset($_GET['do']))?$_GET['do']:'manage_vote';
 $file=$do.".php";
 if(file_exists($file)){
     include $file;
 }else{
-    include "add_subject_form.php";
+    include "manage_vote.php";
 }
 ?>
+</div> 
 <div class="p-3 text-center text-light bg-primary fixed-bottom">mack版權所有、歡迎盜用</div>
 
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
