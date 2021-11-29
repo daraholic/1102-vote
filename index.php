@@ -29,7 +29,8 @@
     </div>
   </div>
 </div>
-</div>    
+</div>
+<div class="container">
 <?php
 
 $do=(isset($_GET['do']))?$_GET['do']:'show_vote_list';
@@ -40,6 +41,7 @@ if(file_exists($file)){
     include "./frontend/show_vote_list.php";
 }
 ?>
+</div>
 <div class="p-3 text-center text-light bg-primary fixed-bottom">mack版權所有、歡迎盜用</div>
 
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
