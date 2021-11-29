@@ -1,4 +1,5 @@
 <?php
+
     $dsn="mysql:host=localhost;charset=utf8;dbname=mypolling";
     $pdo=new PDO($dsn,'root','');
 
@@ -102,4 +103,10 @@ function all($table,...$arg){
     return $pdo->exec($sql);
  }
 
+
+ function dd($array){
+     echo "<pre>";
+     print_r($array);
+     echo "</pre>";
+ }
 ?>
