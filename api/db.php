@@ -33,7 +33,7 @@
         return $pdo->query($sql)->fetchColumn();
     }
 
-    echo rows('options',['topic_id'=>1]);
+
 
     //取出指定資料表的所有資料
 function all($table,...$arg){
