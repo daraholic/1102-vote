@@ -21,7 +21,19 @@
         return $pdo->query($sql)->fetch(PDO::FETCH_ASSOC);
     }
 
+    //計算符合條件的資料筆數
+    function rows($table,$array){
+        global $pdo;
+        $sql="SELECT count(*) FROM `$table` WHERE ";
+            foreach($array as $key=>$value){
+                $tmp[]="`$key`='$value'";
+            }
+            
+            $sql=$sql. implode(" AND ",$tmp);
+        return $pdo->query($sql)->fetchColumn();
+    }
 
+    echo rows('options',['topic_id'=>1]);
 
     //取出指定資料表的所有資料
 function all($table,...$arg){
