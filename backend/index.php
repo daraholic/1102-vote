@@ -1,4 +1,11 @@
-<?php include_once "../api/db.php";?>
+<?php include_once "../api/db.php";
+
+if(!isset($_SESSION['user'])){
+  to("../index.php");
+  exit();
+}
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -15,23 +22,55 @@
 </head>
 <body>
 
-<div class="jumbotron p-0"  style="overflow:hidden;height:250px">
+<div class="jumbotron p-0 mb-0"  style="overflow:hidden;height:250px">
 <a href="index.php">
 <div id="carouselExampleSlidesOnly" class="carousel slide  position-relative" data-ride="carousel">
   <div class="carousel-inner position-absolute" style="top:-250px">
-    <div class="carousel-item active">
-      <img class="d-block w-100" src="../image/dessert-01.jpg" alt="First slide">
-    </div>
-    <div class="carousel-item">
-      <img class="d-block w-100" src="../image/dessert-03.jpg" alt="Second slide">
-    </div>
-    <div class="carousel-item">
-      <img class="d-block w-100" src="../image/dessert-06.jpg" alt="Third slide">
-    </div>
+  <?php 
+    $images=['dessert-02.jpg','dessert-09.jpg','dessert-07.jpg'];
+
+    foreach($images as $key => $image){
+      if($key==0){
+        echo "<div class='carousel-item active'>";
+      }else{
+        echo "<div class='carousel-item'>";
+      }
+
+      echo "  <img class='d-block w-100' src='../image/{$image}' alt='First slide'>";
+      echo "</div>";
+      
+
+    }
+
+
+  ?>
   </div>
 </div>
 </a>
 </div>
+<nav class='bg-light shadow py-3 px-2 d-flex justify-content-between mb-4'>
+<div>
+  <a class='px-2' href="?do=show_vote_list">問卷管理</a>
+  <a class='px-2' href="?do=member">會員管理</a>
+  <a class='px-2' href="?do=ad">廣告管理</a>  
+
+
+</div>
+<?php 
+
+if(isset($_SESSION['user'])){
+  echo "<span class='pr-5'>歡迎！{$_SESSION['user']}</span>";
+?>
+<div>
+  <a class="btn btn-sm btn-primary mx-1" href="../logout.php">登出</a>
+</div>
+<?php
+}
+?>
+
+</nav>
+
+
 <div class="container">
 <?php
 
