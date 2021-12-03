@@ -13,7 +13,7 @@
 </head>
 <body>
 
-<div class="jumbotron p-0" style="overflow:hidden;height:250px">
+<div class="jumbotron p-0 mb-0" style="overflow:hidden;height:250px">
 <a href="index.php">
 <div id="carouselExampleSlidesOnly" class="carousel slide position-relative" data-ride="carousel">
   <div class="carousel-inner position-absolute" style="top:-250px">
@@ -30,7 +30,34 @@
 </div>
 </a>
 </div>
-<div class="container">
+<nav class='bg-light shadow py-3 px-2 d-flex justify-content-between mb-4'>
+<div>&nbsp;</div>
+<?php 
+
+if(isset($_SESSION['error'])){
+  echo "<span class='text-danger'>".$_SESSION['error']."</span>";
+}
+
+if(isset($_SESSION['user'])){
+  echo "<span class='pr-5'>歡迎！{$_SESSION['user']}</span>";
+?>
+<div>
+  <a class="btn btn-sm btn-primary mx-1" href="logout.php">登出</a>
+</div>
+
+<?php
+
+}else{
+?>
+<div>
+  <a class="btn btn-sm btn-primary mx-1" href="?do=login">會員登入</a>
+  <a class="btn btn-sm btn-info mx-1" href="?do=reg">註冊新會員</a>
+</div>
+<?php
+}
+?>
+</nav>
+<div>
 <?php
 
 $do=(isset($_GET['do']))?$_GET['do']:'show_vote_list';
