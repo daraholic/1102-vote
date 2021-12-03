@@ -14,10 +14,10 @@ $topic=$pdo->query($topic_sql)->fetch();
 
 
 foreach($_POST['options'] as $opt){
-
-    $opt_array=["opt"=>$opt,"topic_id"=>$topic['id']];
-    insert('options',$opt_array);
-
+    if($opt!=""){
+        $opt_array=["opt"=>$opt,"topic_id"=>$topic['id']];
+        insert('options',$opt_array);
+    }
 }
 
 ?>
