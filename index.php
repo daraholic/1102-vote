@@ -20,15 +20,24 @@
 <a href="index.php">
 <div id="carouselExampleSlidesOnly" class="carousel slide position-relative" data-ride="carousel">
   <div class="carousel-inner position-absolute" style="top:-250px">
-    <div class="carousel-item active">
-      <img class="d-block w-100 " src="./image/dessert-01.jpg" alt="First slide">
-    </div>
-    <div class="carousel-item">
-      <img class="d-block w-100" src="./image/dessert-07.jpg" alt="Second slide">
-    </div>
-    <div class="carousel-item">
-      <img class="d-block w-100" src="./image/dessert-06.jpg" alt="Third slide">
-    </div>
+  <?php 
+    $images=all('ad',['sh'=>1]);
+
+    foreach($images as $key => $image){
+      if($key==0){
+        echo "<div class='carousel-item active'>";
+      }else{
+        echo "<div class='carousel-item'>";
+      }
+
+      echo "  <img class='d-block w-100' src='image/{$image['name']}' title='{$image['intro']}'>";
+      echo "</div>";
+      
+
+    }
+
+
+  ?>
   </div>
 </div>
 </a>

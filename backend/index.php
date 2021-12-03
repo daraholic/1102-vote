@@ -29,7 +29,7 @@ if(!isset($_SESSION['user'])){
 <div id="carouselExampleSlidesOnly" class="carousel slide  position-relative" data-ride="carousel">
   <div class="carousel-inner position-absolute" style="top:-250px">
   <?php 
-    $images=['dessert-02.jpg','dessert-09.jpg','dessert-07.jpg'];
+    $images=all('ad',['sh'=>1]);
 
     foreach($images as $key => $image){
       if($key==0){
@@ -38,7 +38,7 @@ if(!isset($_SESSION['user'])){
         echo "<div class='carousel-item'>";
       }
 
-      echo "  <img class='d-block w-100' src='../image/{$image}' alt='First slide'>";
+      echo "  <img class='d-block w-100' src='../image/{$image['name']}' alt='{$image['intro']}'>";
       echo "</div>";
       
 
