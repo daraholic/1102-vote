@@ -15,8 +15,8 @@ foreach ($subjects as $key => $value) {
         
         echo "<span class='d-inline-block col-md-8'>".$value['topic']."</span>";
     }
+    
     //總投票數顯示
-
     $count=q("select sum(`count`) as '總計' from `options` where `topic_id`='{$value['id']}'");
     echo "<span class='d-inline-block col-md-2 text-center'>";
     echo $count[0]['總計'];

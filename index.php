@@ -21,15 +21,21 @@
 <div id="carouselExampleSlidesOnly" class="carousel slide position-relative" data-ride="carousel">
   <div class="carousel-inner position-absolute" style="top:-250px">
   <?php 
+    
+    //取得資料表中狀態為1的廣告圖片
     $images=all('ad',['sh'=>1]);
 
+    //使用迴圈來將每一筆廣告圖片依照html的格式顯示在網頁上
     foreach($images as $key => $image){
+
+      //判斷如果是第一筆，會加入一個active的class
       if($key==0){
         echo "<div class='carousel-item active'>";
       }else{
         echo "<div class='carousel-item'>";
       }
 
+      //帶入圖片的檔名及資訊
       echo "  <img class='d-block w-100' src='image/{$image['name']}' title='{$image['intro']}'>";
       echo "</div>";
       
@@ -46,10 +52,12 @@
 <div>&nbsp;</div>
 <?php 
 
+//判斷是否有任何的錯誤訊息存在，有則顯示
 if(isset($_SESSION['error'])){
   echo "<span class='text-danger'>".$_SESSION['error']."</span>";
 }
 
+//判斷是否有登入的紀錄，根據登入狀況，顯示不同的功能按鈕
 if(isset($_SESSION['user'])){
   echo "<span class='pr-5'>歡迎！{$_SESSION['user']}</span>";
 ?>
@@ -72,7 +80,10 @@ if(isset($_SESSION['user'])){
 <div class="container">
 <?php
 
+//根據網址帶的do參數內容來決定要include那一個檔案內容
 $do=(isset($_GET['do']))?$_GET['do']:'show_vote_list';
+
+//建立要引入的檔案路徑
 $file="./frontend/".$do.".php";
 if(file_exists($file)){
     include $file;
